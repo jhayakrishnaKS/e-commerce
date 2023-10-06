@@ -94,20 +94,20 @@ window.addEventListener("load", () => {
   if (!localStorage.getItem("users")) {
     localStorage.setItem("users", JSON.stringify(users));
   }
-  if (location.pathname === "/index.html") {
+  if (location.pathname === "/e-commerce/index.html") {
     loadcustomerprod();
   }
-  if (location.pathname === "/Aindex.html") {
+  if (location.pathname === "/e-commerce/Aindex.html") {
     loadAdminProd();
   }
   if (
-    location.pathname === "/index.html" ||
-    location.pathname === "/orders.html" ||
-    location.pathname === "/addtocart.html"
+    location.pathname === "/e-commerce/index.html" ||
+    location.pathname === "/e-commerce/orders.html" ||
+    location.pathname === "/e-commerce/addtocart.html"
   ) {
     updateCartCount();
   }
-  if (location.pathname === "/addtoCart.html") {
+  if (location.pathname === "/e-commerce/addtoCart.html") {
     loadCartPage();
   }
 });
@@ -152,8 +152,8 @@ const validateLogin = () => {
       } else {
         sessionStorage.setItem("userId", loggedUser.id);
         if (email === "admin@gmail.com")
-          location.replace("/Aindex.html");
-        else location.replace("/index.html");
+          location.replace("/e-commerce/Aindex.html");
+        else location.replace("/e-commerce/index.html");
       }
     }
   } else {
@@ -182,7 +182,7 @@ const validateSignIn = () => {
         password: passwd,
       });
       localStorage.setItem("users", JSON.stringify(users));
-      location.href = "/login.html";
+      location.href = "/e-commerce/login.html";
     }
   } else {
     error.innerText = "All fields are required!";
@@ -190,7 +190,7 @@ const validateSignIn = () => {
 };
 // user signout
 const userSignOut = () => {
-  location.replace("/login.html");
+  location.replace("/e-commerce/login.html");
 };
 
 // saving and updating products
@@ -269,7 +269,7 @@ const addTocartHand = (id) => {
   let products = JSON.parse(localStorage.getItem("products"));
   const product = products.find((product) => product.id === parseInt(id));
   if (!sessionStorage.getItem("userId")) {
-    location.href = "/login.html";
+    location.href = "/e-commerce/login.html";
   } else {
     let userId = parseInt(sessionStorage.getItem("userId"));
     // Initialize an empty array for the cart or retrieve existing cart
@@ -304,7 +304,7 @@ const updateCartCount = () => {
     }
     cartCountRef.innerText = `Your Cart - ${cartCount > 0 ? cartCount : ""}`;
   } else {
-    location.href = "/login.html";
+    location.href = "/e-commerce/login.html";
   }
 };
 
@@ -343,7 +343,7 @@ const loadCartPage = () => {
     }
     
     else {
-      location.href = "/login.html";
+      location.href = "/e-commerce/login.html";
     }
   }
 };
